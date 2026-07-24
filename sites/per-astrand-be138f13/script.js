@@ -10,7 +10,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-/* Lugn 8-bitarsbil: följer musen under rörelse och jagar sedan fotgängare. */
+/* Lugn 8-bitarsbil: följer musen under rörelse och jagar sedan samlarobjekt. */
 (() => {
   const car = document.getElementById('road-runner');
   const pedestrianLayer = document.getElementById('pixel-pedestrians');
@@ -22,7 +22,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     x: window.innerWidth * 0.72, y: window.innerHeight * 0.26,
     tx: window.innerWidth * 0.58, ty: window.innerHeight * 0.48,
     mouseX: 0, mouseY: 0, lastMove: 0, direction: 0, speed: 0,
-    score: 0, mode: 'hunt', targetPerson: null
+    score: 0, collected: 0, mode: 'hunt', targetPerson: null, vehicle: 'car', birdsUnlocked: false
   };
   const people = [];
   const carWidth = 46;
@@ -43,18 +43,29 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     person.element.style.transform = `translate3d(${person.x - 9}px, ${person.y - 15}px, 0)`;
   }
 
+  function personMarkup(type) {
+    return type === 'bird'
+      ? '<i class="bird-wing bird-wing-left"></i><i class="bird-wing bird-wing-right"></i><i class="bird-body"></i><i class="bird-beak"></i>'
+      : '<i class="pp-head"></i><i class="pp-hair"></i><i class="pp-body"></i><i class="pp-arm pp-arm-left"></i><i class="pp-arm pp-arm-right"></i><i class="pp-leg pp-leg-left"></i><i class="pp-leg pp-leg-right"></i>';
+  }
+
+  function setCollectibleType(person, type) {
+    person.type = type;
+    person.element.className = type === 'bird' ? 'pixel-person pixel-bird flying' : 'pixel-person walking';
+    person.element.innerHTML = personMarkup(type);
+  }
+
   function makePerson(index) {
     const person = document.createElement('div');
-    person.className = 'pixel-person walking';
-    person.innerHTML = '<i class="pp-head"></i><i class="pp-hair"></i><i class="pp-body"></i><i class="pp-arm pp-arm-left"></i><i class="pp-arm pp-arm-right"></i><i class="pp-leg pp-leg-left"></i><i class="pp-leg pp-leg-right"></i>';
     pedestrianLayer.appendChild(person);
     const position = randomPosition();
     const pedestrian = {
       element: person, x: position.x, y: position.y,
       direction: Math.random() * Math.PI * 2,
       turnAt: performance.now() + 900 + Math.random() * 2300,
-      active: true, index
+      active: true, index, type: state.birdsUnlocked ? 'bird' : 'person'
     };
+    setCollectibleType(pedestrian, pedestrian.type);
     people.push(pedestrian);
     renderPerson(pedestrian);
   }
@@ -66,15 +77,43 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     person.direction = Math.random() * Math.PI * 2;
     person.turnAt = performance.now() + 1000 + Math.random() * 2200;
     person.active = true;
-    person.element.classList.remove('collected');
-    person.element.classList.add('walking');
-    /* Placera direkt på den nya punkten innan figuren visas igen. */
+    setCollectibleType(person, state.birdsUnlocked ? 'bird' : 'person');
     renderPerson(person);
+  }
+
+  function randomCarColor() {
+    const colors = ['#e85d38', '#2f8f83', '#386fbd', '#d49a2a', '#b65378', '#715cc8', '#d95e45', '#3d9c5a'];
+    car.style.setProperty('--vehicle-color', colors[Math.floor(Math.random() * colors.length)]);
+  }
+
+  function setVehicle(vehicle) {
+    if (state.vehicle === vehicle) return;
+    state.vehicle = vehicle;
+    car.classList.remove('vehicle-car', 'vehicle-f1', 'vehicle-tank', 'vehicle-flower');
+    car.classList.add(`vehicle-${vehicle}`);
+    if (vehicle === 'car') randomCarColor();
+  }
+
+  function updateMilestones() {
+    if (state.score >= 1000) {
+      state.birdsUnlocked = true;
+      setVehicle('flower');
+      people.forEach(person => {
+        if (person.active) setCollectibleType(person, 'bird');
+      });
+    } else if (state.score >= 500) {
+      setVehicle('tank');
+    } else if (state.score >= 100) {
+      setVehicle('f1');
+    }
   }
 
   function updateScore() {
     state.score += 10;
+    state.collected += 1;
     scoreElement.textContent = String(state.score).padStart(3, '0');
+    if (state.collected % 3 === 0 && state.score < 100) randomCarColor();
+    updateMilestones();
     scoreBox.classList.remove('scored');
     void scoreBox.offsetWidth;
     scoreBox.classList.add('scored');
@@ -83,7 +122,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   function collectPerson(person) {
     person.active = false;
     if (state.targetPerson === person) state.targetPerson = null;
-    person.element.classList.remove('walking');
+    person.element.classList.remove('walking', 'flying');
     person.element.classList.add('collected');
     updateScore();
     window.setTimeout(() => respawnPerson(person), 1500 + Math.random() * 1200);
@@ -96,7 +135,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         person.direction += (Math.random() - 0.5) * 1.9;
         person.turnAt = now + 1100 + Math.random() * 2600;
       }
-      const walkSpeed = 0.22;
+      const walkSpeed = person.type === 'bird' ? 0.34 : 0.22;
       person.x += Math.cos(person.direction) * walkSpeed;
       person.y += Math.sin(person.direction) * walkSpeed;
       const margin = 16;
@@ -167,6 +206,8 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     requestAnimationFrame(drive);
   }
 
+  car.classList.add('vehicle-car');
+  randomCarColor();
   for (let index = 0; index < 3; index += 1) makePerson(index);
   requestAnimationFrame(drive);
 })();
