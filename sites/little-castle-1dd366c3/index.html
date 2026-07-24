@@ -13,96 +13,33 @@
 <body>
   <div class="grain"></div>
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Little Castle home">
-      <span class="crest" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span>Little <b>Castle</b></span>
-    </a>
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    <a class="brand" href="#top" aria-label="Little Castle home"><span class="crest" aria-hidden="true"><i></i><i></i><i></i></span><span>Little <b>Castle</b></span></a>
+    <div class="header-tools">
+      <div class="language-switcher" role="group" aria-label="Language selection">
+        <button class="language-button active" type="button" data-language="en" aria-pressed="true">EN</button>
+        <span aria-hidden="true">/</span>
+        <button class="language-button" type="button" data-language="es" aria-pressed="false">ES</button>
+      </div>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
     <nav class="nav" aria-label="Main navigation">
-      <a href="#story">Our story</a>
-      <a href="#experience">The experience</a>
-      <a href="#visit">Find us</a>
-      <a class="nav-cta" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Little+Castle/@36.5348272,-4.6260901,17z/data=!4m6!3m5!1s0xd72e3071acf012d:0xb04f629e6b9e3777!8m2!3d36.5348229!4d-4.6235152!16s%2Fg%2F11kpldm4d4?entry=ttu">Open in Maps <span>↗</span></a>
+      <a href="#story" data-i18n="navStory">Our story</a><a href="#experience" data-i18n="navExperience">The experience</a><a href="#visit" data-i18n="navVisit">Find us</a>
+      <a class="nav-cta" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Little+Castle/@36.5348272,-4.6260901,17z/data=!4m6!3m5!1s0xd72e3071acf012d:0xb04f629e6b9e3777!8m2!3d36.5348229!4d-4.6235152!16s%2Fg%2F11kpldm4d4?entry=ttu"><span data-i18n="navMaps">Open in Maps</span> <span>↗</span></a>
     </nav>
   </header>
-
   <main>
     <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">RESTAURANT · BAR · FUENGIROLA</p>
-        <h1>A little place<br>with a <em>big</em> heart.</h1>
-        <p class="lead">Welcome to Little Castle – an easy-going place for good food, well-mixed drinks and evenings worth lingering over.</p>
-        <div class="hero-actions">
-          <a class="button button-dark" href="#visit">Plan your visit <span>↓</span></a>
-          <a class="text-link" target="_blank" rel="noopener" href="https://maps.app.goo.gl/PcJz3t2NS6W2FnXJ7">Get directions <span>↗</span></a>
-        </div>
-      </div>
-      <div class="hero-art" aria-label="Illustration of Little Castle" role="img">
-        <div class="sun"></div><div class="cloud cloud-a"></div><div class="cloud cloud-b"></div>
-        <div class="castle">
-          <div class="tower tower-left"><span></span><span></span><b></b></div>
-          <div class="tower tower-main"><span></span><span></span><span></span><b></b></div>
-          <div class="tower tower-right"><span></span><span></span><b></b></div>
-          <div class="wall"><div class="door"></div><i></i><i></i><i></i></div>
-          <div class="flag"></div>
-        </div>
-        <div class="horizon"></div>
-      </div>
-      <p class="scroll-note">SCROLL TO DISCOVER <span>↓</span></p>
+      <div class="hero-copy"><p class="eyebrow" data-i18n="heroEyebrow">RESTAURANT · BAR · FUENGIROLA</p><h1 data-i18n-html="heroTitle">A little place<br>with a <em>big</em> heart.</h1><p class="lead" data-i18n="heroLead">Welcome to Little Castle – an easy-going place for good food, well-mixed drinks and evenings worth lingering over.</p><div class="hero-actions"><a class="button button-dark" href="#visit"><span data-i18n="planVisit">Plan your visit</span> <span>↓</span></a><a class="text-link" target="_blank" rel="noopener" href="https://maps.app.goo.gl/PcJz3t2NS6W2FnXJ7"><span data-i18n="directions">Get directions</span> <span>↗</span></a></div></div>
+      <div class="hero-art" aria-label="Illustration of Little Castle" role="img"><div class="sun"></div><div class="cloud cloud-a"></div><div class="cloud cloud-b"></div><div class="castle"><div class="tower tower-left"><span></span><span></span><b></b></div><div class="tower tower-main"><span></span><span></span><span></span><b></b></div><div class="tower tower-right"><span></span><span></span><b></b></div><div class="wall"><div class="door"></div><i></i><i></i><i></i></div><div class="flag"></div></div><div class="horizon"></div></div>
+      <p class="scroll-note"><span data-i18n="scroll">SCROLL TO DISCOVER</span> <span>↓</span></p>
     </section>
-
-    <section class="intro section" id="story">
-      <div class="section-mark">01</div>
-      <div class="intro-title"><p class="eyebrow">WELCOME IN</p><h2>For those<br>simple, <em>good</em> moments.</h2></div>
-      <div class="intro-copy">
-        <p>Little Castle is the restaurant and bar for lunches that run longer than planned, a drink after the beach and dinners in great company.</p>
-        <p>The pace is warm and the atmosphere uncomplicated. Come as you are, stay as long as you like.</p>
-        <a class="text-link" href="#experience">Explore the atmosphere <span>↓</span></a>
-      </div>
-    </section>
-
-    <section class="experience" id="experience">
-      <div class="experience-heading"><p class="eyebrow">WHAT AWAITS</p><h2>A place for<br><em>every</em> occasion.</h2></div>
-      <div class="experience-grid">
-        <article class="feature feature-food"><span class="feature-no">01 / THE FOOD</span><h3>Good things on the table</h3><p>Well-made favourites for both a quick pause and a long, relaxed dinner.</p><div class="plate-art"><span></span><i></i><b></b></div></article>
-        <article class="feature feature-drink"><span class="feature-no">02 / THE BAR</span><h3>Something in your glass</h3><p>Settle in, order your favourite and let the evening find its own pace.</p><div class="glass-art"><i></i><span></span></div></article>
-        <article class="feature feature-company"><span class="feature-no">03 / THE COMPANY</span><h3>Around the same table</h3><p>Weeknight or weekend plan – what matters is who you share it with.</p><div class="spark-art">✦ &nbsp; ✦ &nbsp; ✦</div></article>
-      </div>
-    </section>
-
-    <section class="quote-band">
-      <p class="eyebrow">LITTLE CASTLE</p>
-      <blockquote>“Good food, cold glasses<br>and room for more <em>moments.</em>”</blockquote>
-    </section>
-
-    <section class="visit section" id="visit">
-      <div class="section-mark">02</div>
-      <div class="visit-details">
-        <p class="eyebrow">VISIT US</p>
-        <h2>Find<br><em>Little Castle.</em></h2>
-        <p class="visit-text">You will find us in Fuengirola on the Costa del Sol. Open the map for the latest address, contact details, opening hours and directions.</p>
-        <a class="button button-dark" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Little+Castle/@36.5348272,-4.6260901,17z/data=!4m6!3m5!1s0xd72e3071acf012d:0xb04f629e6b9e3777!8m2!3d36.5348229!4d-4.6235152!16s%2Fg%2F11kpldm4d4?entry=ttu">View on Google Maps <span>↗</span></a>
-      </div>
-      <a class="map-card" target="_blank" rel="noopener" href="https://maps.app.goo.gl/PcJz3t2NS6W2FnXJ7" aria-label="Open Little Castle in Google Maps">
-        <div class="map-lines line-one"></div><div class="map-lines line-two"></div><div class="map-lines line-three"></div>
-        <div class="pin"><span>LC</span></div><div class="map-label">Little Castle <small>Fuengirola</small></div>
-        <div class="map-cta">Open map <span>↗</span></div>
-      </a>
-    </section>
-
-    <section class="closing">
-      <p class="eyebrow">SEE YOU SOON</p>
-      <h2>Make room for<br>a <em>really</em> good evening.</h2>
-      <a class="button button-light" target="_blank" rel="noopener" href="https://maps.app.goo.gl/PcJz3t2NS6W2FnXJ7">Find Little Castle <span>↗</span></a>
-    </section>
+    <section class="intro section" id="story"><div class="section-mark">01</div><div class="intro-title"><p class="eyebrow" data-i18n="welcome">WELCOME IN</p><h2 data-i18n-html="storyTitle">For those<br>simple, <em>good</em> moments.</h2></div><div class="intro-copy"><p data-i18n="storyOne">Little Castle is the restaurant and bar for lunches that run longer than planned, a drink after the beach and dinners in great company.</p><p data-i18n="storyTwo">The pace is warm and the atmosphere uncomplicated. Come as you are, stay as long as you like.</p><a class="text-link" href="#experience"><span data-i18n="explore">Explore the atmosphere</span> <span>↓</span></a></div></section>
+    <section class="experience" id="experience"><div class="experience-heading"><p class="eyebrow" data-i18n="awaits">WHAT AWAITS</p><h2 data-i18n-html="experienceTitle">A place for<br><em>every</em> occasion.</h2></div><div class="experience-grid"><article class="feature feature-food"><span class="feature-no" data-i18n="foodNo">01 / THE FOOD</span><h3 data-i18n="foodTitle">Good things on the table</h3><p data-i18n="foodText">Well-made favourites for both a quick pause and a long, relaxed dinner.</p><div class="plate-art"><span></span><i></i><b></b></div></article><article class="feature feature-drink"><span class="feature-no" data-i18n="barNo">02 / THE BAR</span><h3 data-i18n="barTitle">Something in your glass</h3><p data-i18n="barText">Settle in, order your favourite and let the evening find its own pace.</p><div class="glass-art"><i></i><span></span></div></article><article class="feature feature-company"><span class="feature-no" data-i18n="companyNo">03 / THE COMPANY</span><h3 data-i18n="companyTitle">Around the same table</h3><p data-i18n="companyText">Weeknight or weekend plan – what matters is who you share it with.</p><div class="spark-art">✦ &nbsp; ✦ &nbsp; ✦</div></article></div></section>
+    <section class="quote-band"><p class="eyebrow">LITTLE CASTLE</p><blockquote data-i18n-html="quote">“Good food, cold glasses<br>and room for more <em>moments.</em>”</blockquote></section>
+    <section class="visit section" id="visit"><div class="section-mark">02</div><div class="visit-details"><p class="eyebrow" data-i18n="visitUs">VISIT US</p><h2 data-i18n-html="visitTitle">Find<br><em>Little Castle.</em></h2><p class="visit-text" data-i18n="visitText">You will find us in Fuengirola on the Costa del Sol. Open the map for the latest address, contact details, opening hours and directions.</p><a class="button button-dark" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Little+Castle/@36.5348272,-4.6260901,17z/data=!4m6!3m5!1s0xd72e3071acf012d:0xb04f629e6b9e3777!8m2!3d36.5348229!4d-4.6235152!16s%2Fg%2F11kpldm4d4?entry=ttu"><span data-i18n="viewMaps">View on Google Maps</span> <span>↗</span></a></div><a class="map-card" target="_blank" rel="noopener" href="https://maps.app.goo.gl/PcJz3t2NS6W2FnXJ7" aria-label="Open Little Castle in Google Maps"><div class="map-lines line-one"></div><div class="map-lines line-two"></div><div class="map-lines line-three"></div><div class="pin"><span>LC</span></div><div class="map-label">Little Castle <small>Fuengirola</small></div><div class="map-cta"><span data-i18n="openMap">Open map</span> <span>↗</span></div></a></section>
+    <section class="closing"><p class="eyebrow" data-i18n="seeYou">SEE YOU SOON</p><h2 data-i18n-html="closingTitle">Make room for<br>a <em>really</em> good evening.</h2><a class="button button-light" target="_blank" rel="noopener" href="https://maps.app.goo.gl/PcJz3t2NS6W2FnXJ7"><span data-i18n="findCastle">Find Little Castle</span> <span>↗</span></a></section>
   </main>
-
-  <footer>
-    <a class="brand footer-brand" href="#top"><span class="crest" aria-hidden="true"><i></i><i></i><i></i></span><span>Little <b>Castle</b></span></a>
-    <p>Restaurant & bar · Fuengirola</p>
-    <a target="_blank" rel="noopener" href="https://maps.app.goo.gl/PcJz3t2NS6W2FnXJ7">Google Maps ↗</a>
-    <small>© <span id="year"></span> Little Castle</small>
-  </footer>
+  <footer><a class="brand footer-brand" href="#top"><span class="crest" aria-hidden="true"><i></i><i></i><i></i></span><span>Little <b>Castle</b></span></a><p data-i18n="footerTagline">Restaurant & bar · Fuengirola</p><a target="_blank" rel="noopener" href="https://maps.app.goo.gl/PcJz3t2NS6W2FnXJ7">Google Maps ↗</a><small>© <span id="year"></span> Little Castle</small></footer>
   <script src="script.js"></script>
 </body>
 </html>
