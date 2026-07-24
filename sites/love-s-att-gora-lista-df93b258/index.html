@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Love's Att göra Lista — byggd med fokus, nyfikenhet och framåtrörelse." />
+  <title>Love's Att göra Lista</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Till startsidan">
+      <span class="brand-mark">L</span>
+      <span>LOVE'S LISTA</span>
+    </a>
+    <nav aria-label="Huvudnavigering">
+      <a href="#nu">Just nu</a>
+      <a href="#resan">Resan</a>
+      <a href="#backlog">Backlog</a>
+    </nav>
+    <a class="mini-link" href="#backlog">Se allt <span>↘</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> PERSONLIG FÄRDPLAN · 2025</p>
+        <h1>Gör mer av<br><em>det som blir.</em></h1>
+        <p class="intro">En levande lista över produkter, experiment och idéer. Från första skiss till något som faktiskt finns i världen.</p>
+        <div class="hero-actions">
+          <a href="#nu" class="button">Utforska arbetet <span>↓</span></a>
+          <button class="text-button" id="completeToggle" type="button">Visa klara saker <span id="completedCount">14</span></button>
+        </div>
+      </div>
+      <aside class="hero-note">
+        <p class="note-label">ARBETSSÄTT</p>
+        <p>Små steg.<br>Riktiga releaser.<br><strong>Mycket lärande.</strong></p>
+        <div class="scribble">↗</div>
+      </aside>
+      <div class="orb orb-one"></div><div class="orb orb-two"></div>
+    </section>
+
+    <section class="ticker" aria-label="Aktuella teman">
+      <div>BYGGER PÅ WEBBEN <i>✦</i> KODAR FRÅN MOBILEN <i>✦</i> TESTAR AGENTER <i>✦</i> LANSERAR IDÉER <i>✦</i> </div>
+    </section>
+
+    <section class="work" id="nu">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><span></span> I RÖRELSE</p>
+          <h2>Det som pågår <small>(02)</small></h2>
+        </div>
+        <p class="section-copy">Projekt med fart, öppna frågor och nästa steg som väntar runt hörnet.</p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card rocks">
+          <div class="card-top"><span class="status"><b></b> PÅGÅR</span><span class="number">01</span></div>
+          <div class="card-body">
+            <p class="tag">WEBSITE / PROJECT</p>
+            <h3>OnTheRocks</h3>
+            <p>En digital yta under uppbyggnad. Idé, identitet och webb i samma flöde.</p>
+          </div>
+          <a href="#backlog" class="card-link">Öppna projekt <span>→</span></a>
+        </article>
+        <article class="project-card projexa">
+          <div class="card-top"><span class="status"><b></b> PÅGÅR</span><span class="number">02</span></div>
+          <div class="card-body">
+            <p class="tag">PRODUCT / PROJECT</p>
+            <h3>Projexa</h3>
+            <p>Gör projektarbete klarare, enklare och mer mänskligt — en förbättring i taget.</p>
+          </div>
+          <a href="#backlog" class="card-link">Öppna projekt <span>→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="journey" id="resan">
+      <div class="journey-sticky">
+        <p class="eyebrow"><span></span> MOMENTUM</p>
+        <h2>Idéer som<br>blev <em>gjorda.</em></h2>
+        <p>Det är lätt att samla på planer. Här är några som fick ett avslut — och blev startpunkter för nästa sak.</p>
+        <div class="metric"><strong>14</strong><span>avklarade<br>experiment</span></div>
+      </div>
+      <div class="done-list">
+        <article><span class="done-index">01</span><div><p class="tag">PLATFORM</p><h3>ProjectManager</h3><p>Skapa, förbättra och koppla ihop grundbitarna.</p></div><span class="check">✓</span></article>
+        <article><span class="done-index">02</span><div><p class="tag">INFRASTRUCTURE</p><h3>API + Supabase</h3><p>Backend, databas och frontend i synk.</p></div><span class="check">✓</span></article>
+        <article><span class="done-index">03</span><div><p class="tag">WORKFLOW</p><h3>Deploy till Render</h3><p>Från commit till en sajt som lever.</p></div><span class="check">✓</span></article>
+        <article><span class="done-index">04</span><div><p class="tag">EXPERIMENT</p><h3>Koda via rösten</h3><p>Testat nya sätt att skapa snabbare.</p></div><span class="check">✓</span></article>
+      </div>
+    </section>
+
+    <section class="backlog" id="backlog">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><span></span> NÄSTA UPP</p>
+          <h2>Öppen lista <small>(07)</small></h2>
+        </div>
+        <button class="filter-button" id="filterButton" type="button">Alla uppgifter <span>⌄</span></button>
+      </div>
+      <div class="task-list" id="taskList">
+        <article class="task" data-type="build"><span class="task-no">01</span><span class="task-dot build"></span><div><h3>Koda via mobilen</h3><p>Experiment</p></div><span class="task-type">BUILD</span><button aria-label="Markera Koda via mobilen som klar">○</button></article>
+        <article class="task" data-type="project"><span class="task-no">02</span><span class="task-dot project"></span><div><h3>Project: Roofnet</h3><p>Project</p></div><span class="task-type">PROJECT</span><button aria-label="Markera Project Roofnet som klar">○</button></article>
+        <article class="task" data-type="build"><span class="task-no">03</span><span class="task-dot build"></span><div><h3>Skapa en kodningsrobot</h3><p>Experiment</p></div><span class="task-type">BUILD</span><button aria-label="Markera Skapa en kodningsrobot som klar">○</button></article>
+        <article class="task" data-type="explore"><span class="task-no">04</span><span class="task-dot explore"></span><div><h3>MCP för Projexa?</h3><p>Utforska</p></div><span class="task-type">EXPLORE</span><button aria-label="Markera MCP för Projexa som klar">○</button></article>
+        <article class="task" data-type="build"><span class="task-no">05</span><span class="task-dot build"></span><div><h3>Skapa en chatbot</h3><p>Experiment</p></div><span class="task-type">BUILD</span><button aria-label="Markera Skapa en chatbot som klar">○</button></article>
+        <article class="task" data-type="explore"><span class="task-no">06</span><span class="task-dot explore"></span><div><h3>Testa Claude</h3><p>Utforska</p></div><span class="task-type">EXPLORE</span><button aria-label="Markera Testa Claude som klar">○</button></article>
+        <article class="task" data-type="build"><span class="task-no">07</span><span class="task-dot build"></span><div><h3>DEV–TEST–STAGE–LIVE miljö</h3><p>Deepdive</p></div><span class="task-type">BUILD</span><button aria-label="Markera DEV TEST STAGE LIVE miljö som klar">○</button></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-title">KEEP<br>MAKING<span>.</span></div>
+    <div class="footer-bottom"><p>Love's Att göra Lista</p><p>Byggt med nyfikenhet <span>✦</span></p><a href="#top">Till toppen ↑</a></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

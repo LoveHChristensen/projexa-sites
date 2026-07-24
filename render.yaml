@@ -1,21 +1,11 @@
-projects:
-  - name: Loves projekt
-    environments:
-      - name: Projexa-sites
-        services:
-          - type: web
-            name: projexa-test-site
-            runtime: static
-            rootDir: sites/test-site
-            buildCommand: "true"
-            staticPublishPath: .
-          - type: web
-            name: projexa-test-e6fc50c2
-            runtime: static
-            rootDir: sites/test-e6fc50c2
-            buildCommand: "true"
-            staticPublishPath: .
-            routes:
-              - type: rewrite
-                source: /*
-                destination: /index.html
+services:
+  - type: web
+    name: projexa-love-s-att-gora-lista-df93b258
+    runtime: static
+    rootDir: sites/love-s-att-gora-lista-df93b258
+    buildCommand: "true"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
