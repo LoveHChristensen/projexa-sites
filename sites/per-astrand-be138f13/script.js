@@ -91,7 +91,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     state.vehicle = vehicle;
     car.classList.remove('vehicle-car', 'vehicle-f1', 'vehicle-tank', 'vehicle-flower');
     car.classList.add(`vehicle-${vehicle}`);
-    if (vehicle === 'car') randomCarColor();
+    randomCarColor();
   }
 
   function updateMilestones() {
@@ -113,7 +113,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     state.collected += 1;
     scoreElement.textContent = String(state.score).padStart(3, '0');
     scoreBox.hidden = false;
-    if (state.collected % 3 === 0 && state.score < 100) randomCarColor();
+    if (state.collected % 3 === 0) randomCarColor();
     updateMilestones();
     scoreBox.classList.remove('scored');
     void scoreBox.offsetWidth;
