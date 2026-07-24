@@ -19,18 +19,10 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   if (!car || !pedestrianLayer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const state = {
-    x: window.innerWidth * 0.72,
-    y: window.innerHeight * 0.26,
-    tx: window.innerWidth * 0.58,
-    ty: window.innerHeight * 0.48,
-    mouseX: 0,
-    mouseY: 0,
-    lastMove: 0,
-    direction: 0,
-    speed: 0,
-    score: 0,
-    mode: 'hunt',
-    targetPerson: null
+    x: window.innerWidth * 0.72, y: window.innerHeight * 0.26,
+    tx: window.innerWidth * 0.58, ty: window.innerHeight * 0.48,
+    mouseX: 0, mouseY: 0, lastMove: 0, direction: 0, speed: 0,
+    score: 0, mode: 'hunt', targetPerson: null
   };
   const people = [];
   const carWidth = 46;
@@ -47,21 +39,24 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     };
   }
 
+  function renderPerson(person) {
+    person.element.style.transform = `translate3d(${person.x - 9}px, ${person.y - 15}px, 0)`;
+  }
+
   function makePerson(index) {
     const person = document.createElement('div');
     person.className = 'pixel-person walking';
     person.innerHTML = '<i class="pp-head"></i><i class="pp-hair"></i><i class="pp-body"></i><i class="pp-arm pp-arm-left"></i><i class="pp-arm pp-arm-right"></i><i class="pp-leg pp-leg-left"></i><i class="pp-leg pp-leg-right"></i>';
     pedestrianLayer.appendChild(person);
     const position = randomPosition();
-    people.push({
-      element: person,
-      x: position.x,
-      y: position.y,
+    const pedestrian = {
+      element: person, x: position.x, y: position.y,
       direction: Math.random() * Math.PI * 2,
       turnAt: performance.now() + 900 + Math.random() * 2300,
-      active: true,
-      index
-    });
+      active: true, index
+    };
+    people.push(pedestrian);
+    renderPerson(pedestrian);
   }
 
   function respawnPerson(person) {
@@ -73,6 +68,8 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     person.active = true;
     person.element.classList.remove('collected');
     person.element.classList.add('walking');
+    /* Placera direkt på den nya punkten innan figuren visas igen. */
+    renderPerson(person);
   }
 
   function updateScore() {
@@ -81,6 +78,15 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     scoreBox.classList.remove('scored');
     void scoreBox.offsetWidth;
     scoreBox.classList.add('scored');
+  }
+
+  function collectPerson(person) {
+    person.active = false;
+    if (state.targetPerson === person) state.targetPerson = null;
+    person.element.classList.remove('walking');
+    person.element.classList.add('collected');
+    updateScore();
+    window.setTimeout(() => respawnPerson(person), 1500 + Math.random() * 1200);
   }
 
   function updatePeople(now) {
@@ -99,15 +105,8 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         person.x = clamp(person.x, margin, window.innerWidth - margin);
         person.y = clamp(person.y, margin, window.innerHeight - margin);
       }
-      person.element.style.transform = `translate3d(${person.x - 9}px, ${person.y - 15}px, 0)`;
-      if (Math.hypot(state.x - person.x, state.y - person.y) < 27) {
-        person.active = false;
-        if (state.targetPerson === person) state.targetPerson = null;
-        person.element.classList.remove('walking');
-        person.element.classList.add('collected');
-        updateScore();
-        window.setTimeout(() => respawnPerson(person), 1500 + Math.random() * 1200);
-      }
+      renderPerson(person);
+      if (Math.hypot(state.x - person.x, state.y - person.y) < 27) collectPerson(person);
     });
   }
 
@@ -136,19 +135,12 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   function drive(now) {
     const active = mouseIsActive();
     const mouseDistance = Math.hypot(state.mouseX - state.x, state.mouseY - state.y);
-
     if (active && mouseDistance > 24) {
-      state.mode = 'mouse';
-      state.tx = state.mouseX;
-      state.ty = state.mouseY;
+      state.mode = 'mouse'; state.tx = state.mouseX; state.ty = state.mouseY;
     } else {
-      /* När bilen nått musen, eller musen slutat röra sig, börjar den jaga en gubbe. */
       state.mode = 'hunt';
       if (!state.targetPerson || !state.targetPerson.active) state.targetPerson = chooseTargetPerson();
-      if (state.targetPerson) {
-        state.tx = state.targetPerson.x;
-        state.ty = state.targetPerson.y;
-      }
+      if (state.targetPerson) { state.tx = state.targetPerson.x; state.ty = state.targetPerson.y; }
     }
 
     const dx = state.tx - state.x;
@@ -158,16 +150,13 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (distance > 2) {
       const desiredDirection = Math.atan2(dy, dx) + Math.PI / 2;
       const steering = normalizeAngle(desiredDirection - state.direction);
-      const maxTurn = 0.042;
-      state.direction += clamp(steering, -maxTurn, maxTurn);
+      state.direction += clamp(steering, -0.042, 0.042);
       state.speed += (targetSpeed - state.speed) * 0.035;
       const alignment = Math.max(0.25, Math.cos(normalizeAngle(desiredDirection - state.direction)));
       const forward = Math.min(state.speed * alignment, distance);
       state.x += Math.sin(state.direction) * forward;
       state.y -= Math.cos(state.direction) * forward;
-    } else {
-      state.speed *= 0.95;
-    }
+    } else state.speed *= 0.95;
 
     const marginX = carWidth / 2;
     const marginY = carHeight / 2;
