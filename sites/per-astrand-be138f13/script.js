@@ -22,7 +22,8 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     x: window.innerWidth * 0.72, y: window.innerHeight * 0.26,
     tx: window.innerWidth * 0.58, ty: window.innerHeight * 0.48,
     mouseX: 0, mouseY: 0, lastMove: 0, direction: 0, speed: 0,
-    score: 0, collected: 0, mode: 'hunt', targetPerson: null, vehicle: 'car', birdsUnlocked: false
+    score: 0, collected: 0, mode: 'hunt', targetPerson: null, vehicle: 'car', birdsUnlocked: false,
+    crowdUnlocked: false, populationLevel: 3
   };
   const people = [];
   const carWidth = 46;
@@ -63,7 +64,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       element: person, x: position.x, y: position.y,
       direction: Math.random() * Math.PI * 2,
       turnAt: performance.now() + 900 + Math.random() * 2300,
-      active: true, index, type: state.birdsUnlocked ? 'bird' : 'person'
+      active: true, index, type: state.crowdUnlocked ? 'person' : (state.birdsUnlocked ? 'bird' : 'person')
     };
     setCollectibleType(pedestrian, pedestrian.type);
     people.push(pedestrian);
@@ -77,7 +78,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     person.direction = Math.random() * Math.PI * 2;
     person.turnAt = performance.now() + 1000 + Math.random() * 2200;
     person.active = true;
-    setCollectibleType(person, state.birdsUnlocked ? 'bird' : 'person');
+    setCollectibleType(person, state.crowdUnlocked ? 'person' : (state.birdsUnlocked ? 'bird' : 'person'));
     renderPerson(person);
   }
 
@@ -94,8 +95,25 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     randomCarColor();
   }
 
+  function applyPopulation() {
+    while (people.length < state.populationLevel) makePerson(people.length);
+  }
+
   function updateMilestones() {
-    if (state.score >= 1000) {
+    const desiredPopulation = 3 + Math.floor(state.score / 100);
+    if (desiredPopulation > state.populationLevel) {
+      state.populationLevel = desiredPopulation;
+      applyPopulation();
+    }
+
+    if (state.score >= 5000) {
+      state.crowdUnlocked = true;
+      state.birdsUnlocked = false;
+      setVehicle('car');
+      people.forEach(person => {
+        if (person.active) setCollectibleType(person, 'person');
+      });
+    } else if (state.score >= 1000) {
       state.birdsUnlocked = true;
       setVehicle('flower');
       people.forEach(person => {
@@ -209,6 +227,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
   car.classList.add('vehicle-car');
   randomCarColor();
-  for (let index = 0; index < 3; index += 1) makePerson(index);
+  applyPopulation();
   requestAnimationFrame(drive);
 })();
