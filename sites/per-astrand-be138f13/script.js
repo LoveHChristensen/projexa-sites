@@ -10,7 +10,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-/* Lugn 8-bitarsbil med små fotgängare som ger poäng när bilen kommer ikapp. */
+/* Lugn 8-bitarsbil: följer musen under rörelse och jagar sedan fotgängare. */
 (() => {
   const car = document.getElementById('road-runner');
   const pedestrianLayer = document.getElementById('pixel-pedestrians');
@@ -26,15 +26,16 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     mouseX: 0,
     mouseY: 0,
     lastMove: 0,
-    wanderAt: 0,
     direction: 0,
     speed: 0,
-    score: 0
+    score: 0,
+    mode: 'hunt',
+    targetPerson: null
   };
   const people = [];
   const carWidth = 46;
   const carHeight = 56;
-  const mouseIsActive = () => performance.now() - state.lastMove < 1200;
+  const mouseIsActive = () => performance.now() - state.lastMove < 800;
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
   const normalizeAngle = angle => Math.atan2(Math.sin(angle), Math.cos(angle));
 
@@ -46,21 +47,21 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     };
   }
 
-  function chooseWanderTarget() {
-    const target = randomPosition();
-    state.tx = target.x;
-    state.ty = target.y;
-    state.wanderAt = performance.now() + 2400 + Math.random() * 3000;
-  }
-
   function makePerson(index) {
     const person = document.createElement('div');
     person.className = 'pixel-person walking';
     person.innerHTML = '<i class="pp-head"></i><i class="pp-hair"></i><i class="pp-body"></i><i class="pp-arm pp-arm-left"></i><i class="pp-arm pp-arm-right"></i><i class="pp-leg pp-leg-left"></i><i class="pp-leg pp-leg-right"></i>';
     pedestrianLayer.appendChild(person);
     const position = randomPosition();
-    const direction = Math.random() * Math.PI * 2;
-    people.push({ element: person, x: position.x, y: position.y, direction, turnAt: performance.now() + 900 + Math.random() * 2300, active: true, index });
+    people.push({
+      element: person,
+      x: position.x,
+      y: position.y,
+      direction: Math.random() * Math.PI * 2,
+      turnAt: performance.now() + 900 + Math.random() * 2300,
+      active: true,
+      index
+    });
   }
 
   function respawnPerson(person) {
@@ -101,6 +102,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       person.element.style.transform = `translate3d(${person.x - 9}px, ${person.y - 15}px, 0)`;
       if (Math.hypot(state.x - person.x, state.y - person.y) < 27) {
         person.active = false;
+        if (state.targetPerson === person) state.targetPerson = null;
         person.element.classList.remove('walking');
         person.element.classList.add('collected');
         updateScore();
@@ -109,10 +111,21 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
   }
 
+  function chooseTargetPerson() {
+    const activePeople = people.filter(person => person.active);
+    if (!activePeople.length) return null;
+    return activePeople.reduce((closest, person) => {
+      const personDistance = Math.hypot(person.x - state.x, person.y - state.y);
+      const closestDistance = Math.hypot(closest.x - state.x, closest.y - state.y);
+      return personDistance < closestDistance ? person : closest;
+    });
+  }
+
   window.addEventListener('pointermove', event => {
     state.mouseX = event.clientX;
     state.mouseY = event.clientY;
     state.lastMove = performance.now();
+    state.mode = 'mouse';
   }, { passive: true });
 
   window.addEventListener('resize', () => {
@@ -122,17 +135,26 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
   function drive(now) {
     const active = mouseIsActive();
-    if (active) {
+    const mouseDistance = Math.hypot(state.mouseX - state.x, state.mouseY - state.y);
+
+    if (active && mouseDistance > 24) {
+      state.mode = 'mouse';
       state.tx = state.mouseX;
       state.ty = state.mouseY;
-    } else if (now > state.wanderAt || Math.hypot(state.tx - state.x, state.ty - state.y) < 24) {
-      chooseWanderTarget();
+    } else {
+      /* När bilen nått musen, eller musen slutat röra sig, börjar den jaga en gubbe. */
+      state.mode = 'hunt';
+      if (!state.targetPerson || !state.targetPerson.active) state.targetPerson = chooseTargetPerson();
+      if (state.targetPerson) {
+        state.tx = state.targetPerson.x;
+        state.ty = state.targetPerson.y;
+      }
     }
 
     const dx = state.tx - state.x;
     const dy = state.ty - state.y;
     const distance = Math.hypot(dx, dy);
-    const targetSpeed = active ? 1.2 : 0.68;
+    const targetSpeed = state.mode === 'mouse' ? 1.2 : 0.82;
     if (distance > 2) {
       const desiredDirection = Math.atan2(dy, dx) + Math.PI / 2;
       const steering = normalizeAngle(desiredDirection - state.direction);
@@ -157,6 +179,5 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   }
 
   for (let index = 0; index < 3; index += 1) makePerson(index);
-  chooseWanderTarget();
   requestAnimationFrame(drive);
 })();
