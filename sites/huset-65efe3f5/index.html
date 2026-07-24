@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Huset – en samlad plan för hemmet, rum för rum.">
+  <title>Huset — att göra, rum för rum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Huset startsida"><span class="brand-mark">H</span><span>Huset</span></a>
+    <nav aria-label="Huvudmeny">
+      <a href="#oversikt">Översikt</a>
+      <a href="#listan">Listan</a>
+      <a href="#rum">Rum</a>
+    </nav>
+    <a class="header-action" href="#listan">Se att-göra-listan <span>↓</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Hemmaprojekt · 2024</p>
+        <h1 id="hero-title">Ett hem i<br><em>rörelse.</em></h1>
+        <p class="hero-text">Små fix, stora idéer och allt däremellan. Här samlar vi nästa kapitel för Huset – ett rum i taget.</p>
+        <div class="hero-meta">
+          <div><strong>10</strong><span>projekt</span></div>
+          <div><strong>1</strong><span>klart</span></div>
+          <div><strong>8</strong><span>att börja med</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="house-shape">
+          <div class="roof"></div><div class="house-body"><i></i><i></i><i></i><i></i><b></b></div>
+        </div>
+        <div class="plant plant-one"><i></i><i></i><i></i></div>
+        <div class="plant plant-two"><i></i><i></i><i></i></div>
+        <p>GÖR PLATS<br>FÖR DET NYA</p>
+      </div>
+    </section>
+
+    <section class="progress-section" id="oversikt" aria-labelledby="progress-title">
+      <div class="section-heading"><p class="eyebrow"><span></span> Status</p><h2 id="progress-title">På väg mot ett<br><em>färdigt hemma.</em></h2></div>
+      <div class="progress-card">
+        <div class="progress-top"><span>Övergripande framsteg</span><strong>10%</strong></div>
+        <div class="progress-bar" aria-label="10 procent klart"><span></span></div>
+        <p><b>1 projekt</b> är klart. Resten väntar på rätt stund, rätt verktyg eller bara en ledig söndag.</p>
+      </div>
+    </section>
+
+    <section class="tasks-section" id="listan" aria-labelledby="tasks-title">
+      <div class="tasks-header"><div><p class="eyebrow"><span></span> Att göra</p><h2 id="tasks-title">Nästa på listan.</h2></div><button class="filter-button" id="filterButton" type="button">Visa: Alla <span>⌄</span></button></div>
+      <div class="filter-menu" id="filterMenu" hidden>
+        <button data-filter="all" class="active">Alla projekt</button>
+        <button data-filter="todo">Att göra</button>
+        <button data-filter="progress">Pågående</button>
+        <button data-filter="done">Klart</button>
+      </div>
+      <div class="task-grid">
+        <article class="task-card priority" data-status="todo"><div class="card-top"><span class="number">01</span><span class="tag">Utomhus</span></div><h3>Sätta upp nya<br>myggnät överallt</h3><div class="card-bottom"><span class="status todo">Att göra</span><button class="complete-button" type="button" aria-label="Markera klart">○</button></div></article>
+        <article class="task-card complete" data-status="done"><div class="card-top"><span class="number">02</span><span class="tag">Nedervåning</span></div><h3>Skruva fast<br>barhyllan nere</h3><div class="card-bottom"><span class="status done">✓ Klart</span><button class="complete-button" type="button" aria-label="Markera ej klar">✓</button></div></article>
+        <article class="task-card" data-status="progress"><div class="card-top"><span class="number">03</span><span class="tag">Masterbathroom</span></div><h3>Myggnät i<br>master bathroom</h3><div class="card-bottom"><span class="status progress">Pågående</span><button class="complete-button" type="button" aria-label="Markera klart">○</button></div></article>
+        <article class="task-card" data-status="todo"><div class="card-top"><span class="number">04</span><span class="tag">Utomhus</span></div><h3>Släng grejer från<br>balkongerna</h3><div class="card-bottom"><span class="status todo">Att göra</span><button class="complete-button" type="button" aria-label="Markera klart">○</button></div></article>
+        <article class="task-card" data-status="progress"><div class="card-top"><span class="number">05</span><span class="tag">Entré</span></div><h3>Sätta upp nya kameran<br>ute i entrén</h3><div class="card-bottom"><span class="status progress">Pågående</span><button class="complete-button" type="button" aria-label="Markera klart">○</button></div></article>
+        <article class="task-card" data-status="todo"><div class="card-top"><span class="number">06</span><span class="tag">Trädgård</span></div><h3>Tömma blomjorden från<br>stora krukorna</h3><div class="card-bottom"><span class="status todo">Att göra</span><button class="complete-button" type="button" aria-label="Markera klart">○</button></div></article>
+        <article class="task-card" data-status="todo"><div class="card-top"><span class="number">07</span><span class="tag">Garderob</span></div><h3>Skruva upp hyllsystem<br>i garderob</h3><div class="card-bottom"><span class="status todo">Att göra</span><button class="complete-button" type="button" aria-label="Markera klart">○</button></div></article>
+        <article class="task-card" data-status="todo"><div class="card-top"><span class="number">08</span><span class="tag">Inköp</span></div><h3>Köpa hyllor<br>× 3</h3><div class="card-bottom"><span class="status todo">Att göra</span><button class="complete-button" type="button" aria-label="Markera klart">○</button></div></article>
+        <article class="task-card" data-status="todo"><div class="card-top"><span class="number">09</span><span class="tag">Kontor · Sovrum</span></div><h3>Måla väggar –<br>kontor & sovrum</h3><div class="card-bottom"><span class="status todo">Att göra</span><button class="complete-button" type="button" aria-label="Markera klart">○</button></div></article>
+        <article class="task-card" data-status="todo"><div class="card-top"><span class="number">10</span><span class="tag">Pergola</span></div><h3>Köpa träolja till<br>pergolan</h3><div class="card-bottom"><span class="status todo">Att göra</span><button class="complete-button" type="button" aria-label="Markera klart">○</button></div></article>
+      </div>
+    </section>
+
+    <section class="rooms-section" id="rum" aria-labelledby="rooms-title">
+      <div class="section-heading"><p class="eyebrow"><span></span> Fokusområden</p><h2 id="rooms-title">Rum att landa i.</h2></div>
+      <div class="room-list"><a href="#listan"><span>01</span><strong>Ute & trädgård</strong><i>4 projekt</i><b>↗</b></a><a href="#listan"><span>02</span><strong>Inne & förvaring</strong><i>3 projekt</i><b>↗</b></a><a href="#listan"><span>03</span><strong>Rum & ytor</strong><i>3 projekt</i><b>↗</b></a></div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#top"><span class="brand-mark">H</span><span>Huset</span></a><p>En enkel plats för sakerna som gör ett hus till ett hem.</p><a href="#top" class="back-top">Till toppen ↑</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>

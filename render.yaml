@@ -109,3 +109,13 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
+  - type: web
+    name: projexa-huset-65efe3f5
+    runtime: static
+    rootDir: sites/huset-65efe3f5
+    buildCommand: "true"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
