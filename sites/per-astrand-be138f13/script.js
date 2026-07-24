@@ -90,9 +90,20 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   function setVehicle(vehicle) {
     if (state.vehicle === vehicle) return;
     state.vehicle = vehicle;
-    car.classList.remove('vehicle-car', 'vehicle-f1', 'vehicle-tank', 'vehicle-flower');
+    car.classList.remove('vehicle-car', 'vehicle-f1', 'vehicle-tank', 'vehicle-flower', 'vehicle-big-car');
     car.classList.add(`vehicle-${vehicle}`);
     randomCarColor();
+  }
+
+  function vehicleForLateScore(score) {
+    // Efter 5 000 växlar fordonet vid varje tusental. Från 10 000
+    // är basformen en större bil och därefter växlar formerna var 2 000 poäng.
+    if (score < 10000) {
+      const vehicles = ['car', 'f1', 'tank', 'car', 'f1'];
+      return vehicles[Math.floor((score - 5000) / 1000) % vehicles.length];
+    }
+    const vehicles = ['big-car', 'f1', 'tank', 'car'];
+    return vehicles[Math.floor((score - 10000) / 2000) % vehicles.length];
   }
 
   function applyPopulation() {
@@ -109,7 +120,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (state.score >= 5000) {
       state.crowdUnlocked = true;
       state.birdsUnlocked = false;
-      setVehicle('car');
+      setVehicle(vehicleForLateScore(state.score));
       people.forEach(person => {
         if (person.active) setCollectibleType(person, 'person');
       });
