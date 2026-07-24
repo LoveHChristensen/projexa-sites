@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="game-score" id="game-score" aria-live="polite"><span>POÄNG</span><strong id="score-value">000</strong></div>
+  <div class="game-score" id="game-score" aria-live="polite" hidden><span>POÄNG</span><strong id="score-value">000</strong></div>
   <div id="road-runner" class="road-runner" aria-hidden="true">
     <div class="pixel-car">
       <i class="pc-shadow"></i>
@@ -26,7 +26,10 @@
   </div>
   <div id="pixel-pedestrians" class="pixel-pedestrians" aria-hidden="true"></div>
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Per Åstrand, startsida">PÅ<span>.</span></a>
+    <div class="brand-wrap">
+      <a class="brand" href="#top" aria-label="Per Åstrand, startsida">PÅ<span>.</span></a>
+      <div class="game-score game-score--header" id="game-score-header" aria-live="polite" hidden><span>POÄNG</span><strong id="score-value-header">000</strong></div>
+    </div>
     <nav aria-label="Huvudmeny">
       <a href="#om">Om Per</a>
       <a href="#intressen">Intressen</a>

@@ -14,9 +14,9 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 (() => {
   const car = document.getElementById('road-runner');
   const pedestrianLayer = document.getElementById('pixel-pedestrians');
-  const scoreElement = document.getElementById('score-value');
-  const scoreBox = document.getElementById('game-score');
-  if (!car || !pedestrianLayer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const scoreElement = document.getElementById('score-value-header');
+  const scoreBox = document.getElementById('game-score-header');
+  if (!car || !pedestrianLayer || !scoreElement || !scoreBox || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const state = {
     x: window.innerWidth * 0.72, y: window.innerHeight * 0.26,
@@ -112,6 +112,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     state.score += 10;
     state.collected += 1;
     scoreElement.textContent = String(state.score).padStart(3, '0');
+    scoreBox.hidden = false;
     if (state.collected % 3 === 0 && state.score < 100) randomCarColor();
     updateMilestones();
     scoreBox.classList.remove('scored');
