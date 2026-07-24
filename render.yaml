@@ -9,3 +9,13 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
+  - type: web
+    name: projexa-little-castle-1dd366c3
+    runtime: static
+    rootDir: sites/little-castle-1dd366c3
+    buildCommand: "true"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
