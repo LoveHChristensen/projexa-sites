@@ -99,3 +99,13 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
+  - type: web
+    name: projexa-off-road-pixel-racer-e8ae215b
+    runtime: static
+    rootDir: sites/off-road-pixel-racer-e8ae215b
+    buildCommand: "true"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
