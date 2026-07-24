@@ -69,3 +69,13 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
+  - type: web
+    name: projexa-test4-c1a8fc55
+    runtime: static
+    rootDir: sites/test4-c1a8fc55
+    buildCommand: "true"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
