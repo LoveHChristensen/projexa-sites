@@ -1,0 +1,3 @@
+const button=document.querySelector('.menu-button');const nav=document.querySelector('.nav');
+button?.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));nav.style.display=open?'none':'flex';nav.style.position='absolute';nav.style.top='64px';nav.style.left='0';nav.style.right='0';nav.style.padding='20px 7vw';nav.style.background='#f6f0e5';nav.style.borderBottom='1px solid rgba(23,34,30,.25)';nav.style.flexDirection='column';nav.style.gap='16px'});
+document.querySelector('.signup-form')?.addEventListener('submit',e=>{e.preventDefault();const message=document.querySelector('.form-message');message.textContent='You’re on the list. Good dog.';e.currentTarget.reset();});
