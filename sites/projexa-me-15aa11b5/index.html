@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projexa is the calm, collaborative workspace for moving projects forward." />
+  <title>Projexa.me — Make progress visible</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Projexa home"><span class="brand-mark">P</span><span>Projexa<span class="dot">.me</span></span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#how">How it works</a><a href="#board">Try the board</a><a href="#built">Built for momentum</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" aria-label="Toggle colour theme" title="Toggle colour theme"><span>◐</span></button>
+      <a class="login" href="#start">Log in</a>
+      <a class="button button-small" href="#start">Create account <span>↗</span></a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse"></span> The project room, refined</p>
+        <h1>Make the work<br><em>feel</em> like progress.</h1>
+        <p class="lede">Projexa gives your team one quiet place to shape ideas, move tickets, discuss the details, and see what is truly next.</p>
+        <div class="hero-actions">
+          <a class="button" href="#board">Explore the workspace <span>→</span></a>
+          <a class="text-link" href="#how">See how it works <span>↓</span></a>
+        </div>
+        <div class="trusted"><div class="avatar-stack"><span>J</span><span>M</span><span>A</span><span>+</span></div><p>Made for focused teams<br><strong>who prefer clarity over noise.</strong></p></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a project board">
+        <div class="sun"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="paper-plane">✦</div>
+        <div class="hero-card card-a"><small>IN REVIEW</small><b>Website launch</b><span class="mini-avatars"><i></i><i></i></span></div>
+        <div class="hero-card card-b"><small>DOING</small><b>Make the handoff<br>feel effortless</b><div class="bar"><i></i></div></div>
+        <div class="hero-card card-c"><span class="check">✓</span><b>Interview notes</b></div>
+        <div class="scribble">all in one place</div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Projexa features"><div class="ticker-track"><span>PROJECTS</span><i>✦</i><span>CONVERSATIONS</span><i>✦</i><span>REAL MOMENTUM</span><i>✦</i><span>PROJECTS</span><i>✦</i><span>CONVERSATIONS</span><i>✦</i><span>REAL MOMENTUM</span><i>✦</i></div></section>
+
+    <section class="intro" id="how">
+      <p class="eyebrow">A better rhythm for teamwork</p>
+      <h2>Less chasing. More <em>making.</em></h2>
+      <p>Keep the context, decisions and next steps close to the work. Projexa is designed around the way a good team actually gets things done.</p>
+      <div class="steps">
+        <article><span class="step-num">01</span><div class="step-icon">⌁</div><h3>Shape the work</h3><p>Create a project, build a flow that fits, and turn the important pieces into clear tickets.</p></article>
+        <article><span class="step-num">02</span><div class="step-icon">↔</div><h3>Keep it moving</h3><p>Move work through your board with a view everyone can read at a glance.</p></article>
+        <article><span class="step-num">03</span><div class="step-icon">✺</div><h3>Stay in the loop</h3><p>Discuss decisions where they belong, with updates that make change feel easy to follow.</p></article>
+      </div>
+    </section>
+
+    <section class="board-section" id="board">
+      <div class="section-heading"><div><p class="eyebrow">A small taste of Projexa</p><h2>Your next project,<br><em>already in motion.</em></h2></div><p>Try moving a card. This is the way work feels when the board stays out of your way.</p></div>
+      <div class="demo-shell">
+        <div class="demo-top"><div class="demo-brand"><span class="brand-mark">P</span> Product launch</div><div class="online"><span></span> 4 working now</div><button class="dots" aria-label="More options">•••</button></div>
+        <div class="demo-toolbar"><span>Board</span><span>Timeline</span><span>Notes</span><button>+ Add ticket</button></div>
+        <div class="board" id="demoBoard">
+          <div class="column" data-column="Ideas"><div class="col-head"><span class="col-dot coral"></span><b>Ideas</b><small>2</small></div><div class="dropzone"><article class="ticket" draggable="true"><span class="tag yellow">Research</span><h4>What makes a first run feel magical?</h4><footer><span>Mar 12</span><span class="ticket-user">A</span></footer></article><article class="ticket" draggable="true"><span class="tag blue">Design</span><h4>Collect launch references</h4><footer><span class="comment">◌ 3</span><span class="ticket-user dark">M</span></footer></article></div></div>
+          <div class="column" data-column="In progress"><div class="col-head"><span class="col-dot blue-dot"></span><b>In progress</b><small>2</small></div><div class="dropzone"><article class="ticket active-ticket" draggable="true"><span class="tag blue">Design</span><h4>Design the welcome flow</h4><p class="progress"><i></i></p><footer><span class="comment">◌ 5</span><span class="ticket-user coral-bg">J</span></footer></article><article class="ticket" draggable="true"><span class="tag green">Content</span><h4>Write a reason to care</h4><footer><span>Today</span><span class="ticket-user">S</span></footer></article></div></div>
+          <div class="column" data-column="Ready"><div class="col-head"><span class="col-dot green-dot"></span><b>Ready</b><small>1</small></div><div class="dropzone"><article class="ticket" draggable="true"><span class="tag green">Done</span><h4>Invite the first 30 people</h4><footer><span class="check-round">✓</span><span class="ticket-user dark">L</span></footer></article></div></div>
+        </div>
+        <p class="drag-note"><span>↔</span> Drag a ticket between columns</p>
+      </div>
+    </section>
+
+    <section class="feature-grid" id="built">
+      <div class="feature-copy"><p class="eyebrow">Made for the whole story</p><h2>Every detail has<br>a <em>home.</em></h2><p>From the first rough thought to the final “shipped it”, Projexa keeps the thread intact.</p><a class="text-link" href="#start">Discover the workspace <span>→</span></a></div>
+      <div class="feature-list"><article><span class="feature-symbol">◉</span><div><h3>Context that sticks</h3><p>Tickets hold their discussions, files and decisions—not a trail of lost links.</p></div><span class="arrow">↗</span></article><article><span class="feature-symbol">⌘</span><div><h3>A board that adapts</h3><p>Create the columns and flow that make sense for your team, not someone else’s process.</p></div><span class="arrow">↗</span></article><article><span class="feature-symbol">✦</span><div><h3>Built-in thoughtful help</h3><p>ProjexAI helps you clarify a ticket before it becomes a blocker.</p></div><span class="arrow">↗</span></article></div>
+    </section>
+
+    <section class="closing" id="start"><div class="closing-shape shape-one"></div><div class="closing-shape shape-two"></div><p class="eyebrow">Your work deserves a calm home</p><h2>Start with the<br>next <em>right</em> thing.</h2><p>Bring your project into focus—one ticket, one conversation, one good decision at a time.</p><a class="button light-button" href="#top">Create your workspace <span>→</span></a></section>
+  </main>
+
+  <footer><a class="brand" href="#top"><span class="brand-mark">P</span><span>Projexa<span class="dot">.me</span></span></a><p>© 2026 Projexa.me &nbsp;—&nbsp; Work, with room to think.</p><div><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#top">Contact</a></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

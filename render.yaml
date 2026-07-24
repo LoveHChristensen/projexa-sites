@@ -59,3 +59,13 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
+  - type: web
+    name: projexa-projexa-me-15aa11b5
+    runtime: static
+    rootDir: sites/projexa-me-15aa11b5
+    buildCommand: "true"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
