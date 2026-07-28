@@ -119,3 +119,13 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
+  - type: web
+    name: projexa-lineups-website-3bb0f45c
+    runtime: static
+    rootDir: sites/lineups-website-3bb0f45c
+    buildCommand: "true"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
