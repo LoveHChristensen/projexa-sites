@@ -1,121 +1,145 @@
-services:
-  - type: web
-    name: projexa-love-s-att-gora-lista-df93b258
-    runtime: static
-    rootDir: sites/love-s-att-gora-lista-df93b258
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-  - type: web
-    name: projexa-little-castle-1dd366c3
-    runtime: static
-    rootDir: sites/little-castle-1dd366c3
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-  - type: web
-    name: projexa-test-d7ea04c2
-    runtime: static
-    rootDir: sites/test-d7ea04c2
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-  - type: web
-    name: projexa-per-astrand-be138f13
-    runtime: static
-    rootDir: sites/per-astrand-be138f13
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-  - type: web
-    name: projexa-test2-ed590238
-    runtime: static
-    rootDir: sites/test2-ed590238
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-  - type: web
-    name: projexa-test3-20f81cf3
-    runtime: static
-    rootDir: sites/test3-20f81cf3
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-  - type: web
-    name: projexa-projexa-me-15aa11b5
-    runtime: static
-    rootDir: sites/projexa-me-15aa11b5
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-  - type: web
-    name: projexa-bajs-3056f31e
-    runtime: static
-    rootDir: sites/bajs-3056f31e
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-  - type: web
-    name: projexa-bajskorv-ac934b04
-    runtime: static
-    rootDir: sites/bajskorv-ac934b04
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-  - type: web
-    name: projexa-off-road-pixel-racer-e8ae215b
-    runtime: static
-    rootDir: sites/off-road-pixel-racer-e8ae215b
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-  - type: web
-    name: projexa-huset-65efe3f5
-    runtime: static
-    rootDir: sites/huset-65efe3f5
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-  - type: web
-    name: projexa-lineups-website-3bb0f45c
-    runtime: static
-    rootDir: sites/lineups-website-3bb0f45c
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+projects:
+  - name: Projexa-sites
+    environments:
+      - name: production
+        services:
+          - type: web
+            name: projexa-bajs-3056f31e
+            runtime: static
+            rootDir: sites/bajs-3056f31e
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-bajskorv-ac934b04
+            runtime: static
+            rootDir: sites/bajskorv-ac934b04
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-huset-65efe3f5
+            runtime: static
+            rootDir: sites/huset-65efe3f5
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-lineups-website-3bb0f45c
+            runtime: static
+            rootDir: sites/lineups-website-3bb0f45c
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-little-castle-1dd366c3
+            runtime: static
+            rootDir: sites/little-castle-1dd366c3
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-love-s-att-gora-lista-df93b258
+            runtime: static
+            rootDir: sites/love-s-att-gora-lista-df93b258
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-off-road-pixel-racer-e8ae215b
+            runtime: static
+            rootDir: sites/off-road-pixel-racer-e8ae215b
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-per-astrand-be138f13
+            runtime: static
+            rootDir: sites/per-astrand-be138f13
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-projexa-me-15aa11b5
+            runtime: static
+            rootDir: sites/projexa-me-15aa11b5
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-test-d7ea04c2
+            runtime: static
+            rootDir: sites/test-d7ea04c2
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-test-e6fc50c2
+            runtime: static
+            rootDir: sites/test-e6fc50c2
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-test-site
+            runtime: static
+            rootDir: sites/test-site
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-test2-ed590238
+            runtime: static
+            rootDir: sites/test2-ed590238
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
+          - type: web
+            name: projexa-test3-20f81cf3
+            runtime: static
+            rootDir: sites/test3-20f81cf3
+            buildCommand: "true"
+            staticPublishPath: .
+            routes:
+              - type: rewrite
+                source: /*
+                destination: /index.html
