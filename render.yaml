@@ -1,7 +1,7 @@
 projects:
-  - name: Projexa-sites
+  - name: Loves projekt
     environments:
-      - name: production
+      - name: Projexa sites
         services:
           - type: web
             name: projexa-bajs-3056f31e
