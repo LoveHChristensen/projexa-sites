@@ -1,11 +1,1 @@
-services:
-  - type: web
-    name: projexa-solvej-smeds-8a44c88c
-    runtime: static
-    rootDir: sites/solvej-smeds-8a44c88c
-    buildCommand: "true"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+services: []
