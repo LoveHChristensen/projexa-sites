@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hundar — allt för ett rikare hundliv.">
+  <title>Hundar — Livet med fyra tassar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-grain"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Hundar startsida"><span class="brand-mark">●</span>HUNDAR</a>
+    <button class="menu-button" aria-label="Öppna meny" aria-expanded="false"><span></span><span></span></button>
+    <nav class="main-nav" aria-label="Huvudmeny">
+      <a href="#vardag">Vardag</a>
+      <a href="#guider">Guider</a>
+      <a href="#om-oss">Om oss</a>
+      <a class="nav-cta" href="#nyhetsbrev">Få tasspost <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> För ett liv med fler svansvift</p>
+        <h1 id="hero-title">Allt börjar<br>med en <em>promenad.</em></h1>
+        <p class="hero-intro">Praktiska råd, små ögonblick och stor kärlek — för dig som delar livet med en hund.</p>
+        <a class="button button-dark" href="#guider">Utforska guider <span>↓</span></a>
+      </div>
+      <div class="hero-art" aria-label="Illustration av en glad hund">
+        <div class="sun"></div>
+        <div class="cloud cloud-one"></div><div class="cloud cloud-two"></div>
+        <div class="hill hill-back"></div><div class="hill hill-front"></div>
+        <div class="dog">
+          <div class="dog-tail"></div><div class="dog-body"></div><div class="dog-leg leg-one"></div><div class="dog-leg leg-two"></div>
+          <div class="dog-head"><div class="dog-ear ear-one"></div><div class="dog-ear ear-two"></div><i class="dog-eye eye-one"></i><i class="dog-eye eye-two"></i><i class="dog-nose"></i><i class="dog-mouth"></i></div>
+        </div>
+        <p class="art-caption">UT &amp; NOSA PÅ VÄRLDEN</p>
+      </div>
+    </section>
+
+    <section class="values" id="vardag" aria-label="Vad Hundar handlar om">
+      <div class="value"><span class="value-number">01</span><h2>Rörelse<br>med mening</h2><p>Från kvarterspromenaden till skogsstigen.</p></div>
+      <div class="value"><span class="value-number">02</span><h2>Vardag<br>med hjärta</h2><p>Små val som gör stor skillnad, varje dag.</p></div>
+      <div class="value"><span class="value-number">03</span><h2>Vänner<br>för livet</h2><p>Mer förståelse. Starkare band. Roligare tillsammans.</p></div>
+    </section>
+
+    <section class="guides" id="guider" aria-labelledby="guides-title">
+      <div class="section-heading"><div><p class="eyebrow"><span></span> HANDPLOCKAT FÖR DIG</p><h2 id="guides-title">Bra att ha<br>i kopplet.</h2></div><a href="#nyhetsbrev" class="text-link">Se alla ämnen <span>→</span></a></div>
+      <div class="guide-grid">
+        <article class="guide-card card-orange"><div class="card-icon">☼</div><p class="card-tag">UTELIV</p><h3>Gör promenaden till dagens höjdpunkt</h3><a href="#nyhetsbrev" aria-label="Läs mer om promenader">Läs guiden <span>↗</span></a></article>
+        <article class="guide-card card-blue"><div class="card-icon">⌇⌇</div><p class="card-tag">HÄLSA</p><h3>Fem små signaler din hund vill att du ser</h3><a href="#nyhetsbrev" aria-label="Läs mer om hundens signaler">Läs guiden <span>↗</span></a></article>
+        <article class="guide-card card-green"><div class="card-icon">✦</div><p class="card-tag">TILLSAMMANS</p><h3>Bygg tillit med lekar som faktiskt är kul</h3><a href="#nyhetsbrev" aria-label="Läs mer om lekar">Läs guiden <span>↗</span></a></article>
+      </div>
+    </section>
+
+    <section class="quote-section"><div class="quote-mark">“</div><blockquote>En hund lär oss att vara precis där vi är — och att glädjas åt det.</blockquote><p>— EN LITEN PÅMINNELSE FÖR STORA DAGAR</p></section>
+
+    <section class="about" id="om-oss"><div class="about-stamp">♥<br><small>FÖR HUNDAR</small></div><div><p class="eyebrow"><span></span> VÅR ENKLA IDÉ</p><h2>Färre måsten.<br><em>Fler tassavtryck.</em></h2></div><p class="about-copy">Hundar är en varm plats för hundmänniskor. Vi samlar kunskap och inspiration som hjälper er att få ut mer av tiden tillsammans — utan pekpinnar, bara med hjärta.</p></section>
+
+    <section class="newsletter" id="nyhetsbrev"><div><p class="eyebrow light"><span></span> TASSPOST, IBLAND</p><h2>Lite klokare.<br><em>Mycket gladare.</em></h2></div><form class="signup-form"><label for="email">Din e-postadress</label><div class="input-row"><input id="email" type="email" placeholder="hej@exempel.se" required><button type="submit">Anmäl mig <span>→</span></button></div><p class="form-note">Vi skriver bara när vi har något fint att dela.</p></form></section>
+  </main>
+
+  <footer><a class="brand" href="#top"><span class="brand-mark">●</span>HUNDAR</a><p>För livet med fyra tassar.</p><p>© <span id="year"></span> Hundar</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
